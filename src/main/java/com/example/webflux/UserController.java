@@ -5,15 +5,18 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import io.github.resilience4j.circuitbreaker.*;
 import java.time.Duration;
+import java.util.Map;
 
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private final RedisService redisService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, RedisService redisService) {
         this.userService = userService;
+        this.redisService = redisService;
     }
 
     @GetMapping
@@ -31,8 +34,26 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @GetMapping("/test")
-    public void test() {
+    @PostMapping("/redis")
+    public void saveRedis(@RequestBody Map<String, String> payload) {
+        String key = payload.get("key");
+        String value = payload.get("value");
+
+        redisService.save(key, value);
+    }
+
+    @GetMapping("/redis/{key}")
+    public String findRedis(@PathVariable String key) {
+        return redisService.find(key);
+    }
+
+    @DeleteMapping("/redis/{key}")
+    public void deleteRedis(@PathVariable String key) {
+        redisService.delete(key);
+    }
+
+    @GetMapping("/CircuitBreakerTest")
+    public void CircuitBreakerTest() {
 
         CircuitBreakerConfig config = CircuitBreakerConfig.custom()
                 .failureRateThreshold(50)  // 50% 실패율 기준

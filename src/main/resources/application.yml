@@ -8,10 +8,8 @@ spring:
       max-size: 10                               # 최대 커넥션 수
       initial-size: 2                            # 초기 커넥션 수
   redis:
-    host: bdg407.synology.meㅏㅏ
-    port: 6379
-    database: 0
-    timeout: 5000ms
+    host: bdg407.synology.me
+    port: 16379
 
 logging:
   level:
