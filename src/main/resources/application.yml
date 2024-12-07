@@ -7,8 +7,25 @@ spring:
       enabled: true                              # 커넥션 풀 활성화
       max-size: 10                               # 최대 커넥션 수
       initial-size: 2                            # 초기 커넥션 수
-
+  redis:
+    host: bdg407.synology.meㅏㅏ
+    port: 6379
+    database: 0
+    timeout: 5000ms
 
 logging:
   level:
     io.r2dbc: DEBUG                              # R2DBC 디버깅 로그 활성화
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+    instances:
+      testBreaker:
+        baseConfig: default
