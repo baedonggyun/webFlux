@@ -1,0 +1,14 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://bdg407.synology.me:13307/hair
+    username: bdg407
+    password: black967
+    pool:
+      enabled: true                              # 커넥션 풀 활성화
+      max-size: 10                               # 최대 커넥션 수
+      initial-size: 2                            # 초기 커넥션 수
+
+
+logging:
+  level:
+    io.r2dbc: DEBUG                              # R2DBC 디버깅 로그 활성화
