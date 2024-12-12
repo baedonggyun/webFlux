@@ -7,9 +7,10 @@ spring:
       enabled: true                              # 커넥션 풀 활성화
       max-size: 10                               # 최대 커넥션 수
       initial-size: 2                            # 초기 커넥션 수
-  redis:
-    host: bdg407.synology.me
-    port: 16379
+  data:
+    redis:
+      host: bdg407.synology.me
+      port: 16379
 
 logging:
   level:
