@@ -1,12 +1,15 @@
 spring:
   r2dbc:
-    url: r2dbc:oracle://bdg407.synology.me:13307/hair
-    username: bdg407
-    password: black967
+    url: r2dbc:oracle://localhost/docker
+    username: docker
+    password: docker123
     pool:
       enabled: true                              # 커넥션 풀 활성화
-      max-size: 10                               # 최대 커넥션 수
-      initial-size: 2                            # 초기 커넥션 수
+      initial-size: 50                           # 초기 커넥션 풀 크기
+      max-size: 800                              # 최대 커넥션 풀 크기
+      max-idle-time: 5m                          # 유휴 커넥션 유지 시간
+      max-create-connection-time: 300ms          # 커넥션 생성 대기 시간
+      max-acquire-time: 1s                       # 커넥션 대기 시간
   data:
     redis:
       host: bdg407.synology.me
