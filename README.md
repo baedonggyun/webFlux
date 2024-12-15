@@ -1,2 +1,2 @@
 기영아 가자~
-![image](https://github.com/user-attachments/assets/170d4266-60b8-4df9-abe3-8ab214348b51)
+<img width="755" alt="스크린샷 2024-12-15 오후 4 11 59" src="https://github.com/user-attachments/assets/09ede27b-58f5-4b3a-9881-14788a6e2315" />
