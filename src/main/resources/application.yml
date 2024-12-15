@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:oracle://localhost/ORCL
+    url: r2dbc:oracle://bdg407.synology.me:11521/XE
     username: docker
     password: docker123
     pool:
