@@ -19,6 +19,15 @@ public class UserController {
         this.redisService = redisService;
     }
 
+    @GetMapping("/test")
+    public String test() {
+        // 강제로 예외 발생
+        //throw new RuntimeException("강제로 발생한 500 Internal Server Error");
+
+        System.out.println("Hello WebFlux");
+        return "Hello WebFlux";
+    }
+
     @GetMapping
     public Flux<User> getAllUsers() {
         return userService.getAllUsers();
