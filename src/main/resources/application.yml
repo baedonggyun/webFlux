@@ -1,7 +1,7 @@
 spring:
   r2dbc:
     url: r2dbc:oracle://localhost/ORCL
-    username: C##docker
+    username: docker
     password: docker123
     pool:
       enabled: true                              # 커넥션 풀 활성화
