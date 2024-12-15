@@ -28,11 +28,12 @@ public class UserService {
     @CircuitBreaker(name = "testCircuitBreaker")
     public Mono<String> testCircuitBreaker() {
         return Mono.just("Hello, World!")
-                .map(data -> {
+                .handle((data, sink) -> {
                     if (Math.random() > 0.5) {
-                        throw new RuntimeException("Simulated failure");
+                        sink.error(new RuntimeException("Simulated failure"));
+                        return;
                     }
-                    return data;
+                    sink.next(data);
                 });
     }
 
