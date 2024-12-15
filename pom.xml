@@ -49,10 +49,16 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Resilience4j -->
+        <!-- Resilience4j Core -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <!-- Resilience4j Reactor (리액티브 환경 지원) -->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
             <version>1.7.1</version>
         </dependency>
 
@@ -89,6 +95,13 @@
             <artifactId>commons-io</artifactId>
             <version>2.14.0</version> <!-- 최신 안정 버전 -->
         </dependency>
+
+        <!-- AOP Dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
