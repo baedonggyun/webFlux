@@ -9,10 +9,7 @@ spring:
       max-size: 800                              # 최대 커넥션 풀 크기
       max-idle-time: 5m                          # 유휴 커넥션 유지 시간
       max-create-connection-time: 300ms          # 커넥션 생성 대기 시간
-      max-acquire-time: 1s                       # 커넥션 대기 시간
-  redis:
-    host: bdg407.synology.me                     # 호스트 이름
-    port: 16379                                  # 포트 번호
+      max-acquire-time: 1s                       # 커넥션 대기 시간                               # 포트 번호
 
 logging:
   level:
