@@ -1,5 +1,6 @@
 package com.example.webflux;
 
+import com.example.webflux.circuitBreaker.CircuitBreakerEnabled;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -25,16 +26,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    @CircuitBreaker(name = "testCircuitBreaker")
+    @CircuitBreakerEnabled(name = "exampleCircuitBreaker", recordExceptions = {RuntimeException.class})
     public Mono<String> testCircuitBreaker() {
-        return Mono.just("Hello, World!")
-                .handle((data, sink) -> {
-                    if (Math.random() > 0.5) {
-                        sink.error(new RuntimeException("Simulated failure"));
-                        return;
-                    }
-                    sink.next(data);
-                });
+        throw new RuntimeException("test");
     }
 
 

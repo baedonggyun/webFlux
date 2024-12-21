@@ -14,20 +14,3 @@ spring:
 logging:
   level:
     io.r2dbc: DEBUG                              # R2DBC 디버깅 로그 활성화
-
-resilience4j:
-  circuitbreaker:
-    configs:
-      default:
-        slidingWindowSize: 10                    # 슬라이딩 윈도우 크기
-        failureRateThreshold: 50                 # 실패 비율 임계값 (퍼센트)
-        waitDurationInOpenState: 5s              # Open 상태 유지 시간
-        permittedNumberOfCallsInHalfOpenState: 3 # Half-Open 상태에서 허용되는 호출 수
-        minimumNumberOfCalls: 10                 # Circuit Breaker 활성화 최소 호출 수
-    instances:
-      testCircuitBreaker:
-        base-config: default
-      test2CircuitBreaker:
-        base-config: default
-        failureRateThreshold: 40                 # 특정 서비스에 대한 사용자 지정 설정
-        slidingWindowSize: 20
