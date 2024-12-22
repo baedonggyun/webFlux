@@ -7,9 +7,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CircuitBreakerEnabled {
-
-    String name();
-    Class<? extends Throwable>[] recordExceptions() default {};
-
+public @interface CustomCircuitBreaker {
+    String name(); // 서킷 브레이커 이름
 }
