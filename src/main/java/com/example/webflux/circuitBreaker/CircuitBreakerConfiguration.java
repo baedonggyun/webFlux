@@ -16,8 +16,10 @@ public class CircuitBreakerConfiguration {
         CircuitBreakerConfig config = CircuitBreakerConfig.custom()
                 .failureRateThreshold(50) // 실패율 임계값 (50%)
                 .waitDurationInOpenState(Duration.ofSeconds(30)) // 열린 상태 대기 시간
-                .slidingWindowSize(5) // 최근 5번 호출 기준으로 상태 평가
-                .minimumNumberOfCalls(3) // 최소 3번 호출 이후 상태 평가
+                .slidingWindowSize(10) // 최근 5번 호출 기준으로 상태 평가
+                .minimumNumberOfCalls(5) // 최소 3번 호출 이후 상태 평가
+                .permittedNumberOfCallsInHalfOpenState(3)
+                .automaticTransitionFromOpenToHalfOpenEnabled(true)
                 .build();
 
         return CircuitBreakerRegistry.of(config);
